@@ -43,8 +43,8 @@
 
 
 
-<div class="row  row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-    <div class="All col" *ngFor="let product of filteredProductList; trackBy: trackByProductId">
+<div class="row ">
+    <div class="All col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let product of filteredProductList; trackBy: trackByProductId">
         <div class="card">
             <a style="text-decoration: none;" [routerLink]="['/product-details' , product._id]">
                 <div class="image_container">
