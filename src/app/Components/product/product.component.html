@@ -1,0 +1,35 @@
+
+    <div class="card">
+    <a style="text-decoration: none;" [routerLink]="['/product-details' , product._id]">
+        <div class="badge">HOT SALE</div>
+        <div class="tilt">
+            <div style="border-radius: 15px;" class="img"><img class="w-100" [src]="product.imageCover"></div>
+        </div>
+
+        <div class="info">
+            <div class="cat">{{product.category.name}}</div>
+            <h2 class="title">{{product.title.slice(0,15)}}</h2>
+            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            <div class="feats">
+                <span class="feat"> Rating Average : {{product.ratingsAverage}}</span>
+            </div>
+            <div style="display: flex; flex-direction: column;" class="bottom">
+                <div class="price me-auto my-2">
+                    <span class="new">{{product.price | addEGP}}</span>
+                    <span style="color: rgba(0, 0, 0, 0.588);">Lorem ipsum dolor sit amet.</span>
+                </div>
+
+            </div>
+        </div>
+
+    </a>
+
+    <button (click)="addToCart(product._id)" class="btn w-100 text-center">
+        <span class="mx-auto">Add to Cart</span>
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+    </button>
+</div>

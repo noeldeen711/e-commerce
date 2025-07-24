@@ -1,0 +1,110 @@
+<div class="container p-4 mx-auto ">
+    
+    <form (ngSubmit)="handleResetPass()" [formGroup]="resetPassForm">
+
+
+
+
+        @if(responseErrorMessage){
+
+              <div class="error mx-auto">
+      <div class="error__icon">
+         <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      <div style="font-weight: bold; font-size: 14px;" class="error__title mx-auto">{{responseErrorMessage}}</div>
+      <div class="error__close">
+         <svg
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      </div>
+
+      }
+
+
+
+      <h3 style="color: white;">Please Enter A New Password :</h3>
+
+        <div class="inputGroup">
+            <input class="input form-control mt-3" formControlName="email" type="email" id="email" required="" placeholder="E-mail" autocomplete="off">
+            
+
+            @if(resetPassForm.get('email')?.touched){
+                <div>
+
+                     @if(resetPassForm.get('email')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">Email Required</p>
+                     }
+
+                     @if(resetPassForm.get('email')?.getError('email')){
+                        <p class="text-danger mt-1 ms-3" >Email Not Valid</p>
+                     }
+                </div>
+            }
+        </div>
+
+        <div class="inputGroup">
+            <input class="input form-control mt-3" formControlName="newPassword" type="newPassword" id="newPassword" required="" placeholder="newPassword" autocomplete="off">
+            
+
+             @if(resetPassForm.get('newPassword')?.touched){
+                <div>
+
+                     @if(resetPassForm.get('newPassword')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">New password Required</p>
+                     }
+
+                     @if(resetPassForm.get('newPassword')?.getError('pattern')){
+                        <p class="text-danger mt-1 ms-3" > Invalid new password </p>
+                     }
+                </div>
+            }
+        </div>
+      
+
+        <div class="inputGroup text-center">
+             <button type="submit" [disabled]="resetPassForm.invalid" class="login-button btn btn-primary text-light mt-3 " >
+               
+               @if(isLoading == false){
+                  <span>Send</span>
+               }
+               @else{
+                    <span>
+                  <div class="loader">
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                  </div>
+               </span>
+               } 
+
+              
+                  
+              
+            </button>
+        </div>
+            
+       </form>
+</div>

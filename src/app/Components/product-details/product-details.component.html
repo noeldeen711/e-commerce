@@ -1,0 +1,37 @@
+@if (productDetails){
+<div class="product mx-auto">
+    <div class="product-img">
+        <owl-carousel-o [options]="customOptions">
+
+            @for (image of productDetails.images ; track $index) {
+            <ng-template carouselSlide>
+                <img class="w-100" [src]="image"/>
+            </ng-template>
+            }
+
+        </owl-carousel-o>
+    </div>
+    <div class="product-listing">
+        <div class="content">
+            <h1 class="name">{{productDetails.title.slice(0,30)}}</h1>
+            <p class="info">{{productDetails.description}}</p>
+            <span>Brand : {{productDetails.brand.name}}</span>
+            <p class="price">{{productDetails.price}} EGP</p>
+            <span>{{productDetails.category.name}}</span><br>
+            <span> Available Quantity : {{productDetails.quantity}}</span>
+            <div class="btn-and-rating-box">
+                <div class="rating">
+                    <span style="margin-right: 5px;">{{productDetails.ratingsAverage}}</span>
+                    <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
+                    <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
+                    <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
+                    <img src="https://github.com/kunaal438/product-page/blob/master/img/star.png?raw=true" alt="">
+                    <img src="https://github.com/kunaal438/product-page/blob/master/img/star%20stroke.png?raw=true"
+                        alt="">
+                </div>
+                <button class="btn">Buy now</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

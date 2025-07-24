@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: "Francois One", sans-serif;
+    background: radial-gradient(circle,rgb(8, 24, 57) 60%, rgb(0, 15, 50) 100%);
+}

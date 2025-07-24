@@ -1,0 +1,12 @@
+<h3 class="py-3 text-primary">Popular Categories Now :</h3>
+
+<owl-carousel-o [options]="customOptions">
+
+    @for (category of categoriesList ; track category._id) {
+    <ng-template carouselSlide>
+        <img style="height: 200px;" class="w-100 object-fit-cover" [src]="category.image">
+        <p style="color: white; padding-block: 10px;">{{category.name}}</p>
+    </ng-template>
+    }
+
+</owl-carousel-o>

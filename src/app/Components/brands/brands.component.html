@@ -1,0 +1,13 @@
+<div class="brands-container">
+
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gap-4">
+
+
+        @for(brands of brandList; track brands._id){
+        <div class="brand-card mx-auto">
+            <img style="border-radius: 10px;" [src]="brands.image" class="brands-image w-100">
+            <h3 class="brand-name text-primary">{{ brands.name }}</h3>
+        </div>
+        }
+    </div>
+</div>

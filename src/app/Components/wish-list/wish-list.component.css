@@ -1,0 +1,56 @@
+/* From Uiverse.io by Javierrocadev */ 
+.card {
+  height: 100%;
+  background: #0084a969;
+  color: #073b4c;
+  font-weight: 600;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  position: relative;
+  transition: all .5s ease;
+}
+
+.card::before {
+  content: "Sale";
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  top: 5%;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #ef476f;
+  color: aliceblue;
+  font-weight: 800;
+  transition: all .5s ease;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 1.4em;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.card:hover {
+  border-top-left-radius: 35px;
+  box-shadow: 5px 5px 0px 0px #06d69e59, 10px 10px 0px 0px #08607d, 15px 15px 0px 0px #0698d6, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.card:hover .card__image {
+  border-top-left-radius: 25px;
+}
+
+.card:hover::before {
+  transform: scale(1.3) rotate(-30deg);
+}

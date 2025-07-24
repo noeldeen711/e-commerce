@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg  w-100 p-3">
+    <div class="container">
+      <a style="font-size: 30px;" class="navbar-brand text-white"><img style="width: 50px; margin-right: 10px;"
+          src="images/shopping-cart_4817571.png" alt="">Fresh Cart</a>
+      <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+
+          @if(isLoggedInUser){
+
+
+            <a style="text-decoration: none;" routerLink="profile" routerLinkActive="bg-primary">
+              <div class="card d-flex col-sm-2">
+                <div class="card_load"><img style="width: 100%;" src="images/user-icon-icon_1076610-59410.avif"></div>
+                <div style="font-size: 16px; font-weight: bold; text-transform: uppercase;"
+                  class="card_load_extreme_title text-primary"> <span
+                    style="color: rgba(0, 0, 0, 0.687); font-weight: 100;"> Welcome :</span> {{currentUserName}}</div>
+
+              </div>
+            </a>
+
+          <li class="nav-item ">
+            <a class="nav-link text-white" routerLink="home" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="brand" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Brands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="categorie" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="product" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="wishList" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">WishList</a>
+          </li>
+          <li class="nav-itemm my-2">
+            <a class="nav-link text-white" routerLink="profile" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Profile</a>
+          </li>
+          <li style="margin-right: 10px;" class="nav-item position-relative">
+            <a routerLink="cart">
+              <img style="width: 30px;" src="images/shopping-cart_4817571.png" alt="">
+              <span style="font-size: 12px; margin-top: 5px; margin-right: 5px;"
+                class="badgee position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                {{cartItemsNum}}
+              </span>
+            </a>
+
+          </li>
+          <li class="nav-itemmm">
+            <a (click)="logOut()" class="nav-link bg-warning text-white px-3 mx-1"
+              style="border-radius: 50px; cursor: pointer;">SignOut</a>
+          </li>
+          }
+
+
+          @if(isLoggedInUser == false){
+
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="login" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="register" routerLinkActive="bg-primary"
+              style="border-radius: 7px;">Register</a>
+          </li>
+
+          }
+
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</nav>

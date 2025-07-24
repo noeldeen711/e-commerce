@@ -1,0 +1,164 @@
+<div class="container p-4 ">
+
+   <form (ngSubmit)="handleSignUp()" [formGroup]="RegisterFormObj">
+
+
+      @if(responseErrorMessage){
+
+      <div class="error mx-auto">
+         <div class="error__icon">
+            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+         </div>
+         <div style="font-weight: bold; font-size: 16px;" class="error__title mx-auto">{{responseErrorMessage}}</div>
+         <div class="error__close">
+            <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+         </div>
+      </div>
+
+
+      }
+
+
+
+
+
+      <div class="inputGroup my-3">
+         <label style="color: white;" for="name">Name</label>
+         <input class="form-control" formControlName="name" type="name" id="name" required="" autocomplete="off">
+
+
+         @if(RegisterFormObj.get('name')?.touched){
+         <div>
+
+            @if(RegisterFormObj.get('name')?.getError('required')){
+            <p class="text-danger mt-1 ms-3">Name Required</p>
+            }
+
+            @if(RegisterFormObj.get('name')?.getError('minlength')){
+            <p class="text-danger mt-1 ms-3">Name Min chars is 3</p>
+            }
+
+            @if(RegisterFormObj.get('name')?.getError('maxlength')){
+            <p class="text-danger mt-1 ms-3">Name Max Chars is 20</p>
+            }
+         </div>
+         }
+
+      </div>
+
+      <div class="inputGroup my-3">
+         <label style="color: white;" for="name">Email</label>
+         <input class="form-control" formControlName="email" type="email" id="email" required="" autocomplete="off">
+         
+
+         @if(RegisterFormObj.get('email')?.touched){
+         <div>
+
+            @if(RegisterFormObj.get('email')?.getError('required')){
+            <p class="text-danger mt-1 ms-3">Email Required</p>
+            }
+
+            @if(RegisterFormObj.get('email')?.getError('email')){
+            <p class="text-danger mt-1 ms-3">Email Not Valid</p>
+            }
+         </div>
+         }
+      </div>
+
+      <div class="inputGroup my-3">
+         <label style="color: white;" for="name">Phone</label>
+         <input class="form-control" formControlName="phone" type="tel" id="phone" required="" autocomplete="off">
+
+
+         @if(RegisterFormObj.get('phone')?.touched){
+         <div>
+
+            @if(RegisterFormObj.get('phone')?.getError('required')){
+            <p class="text-danger mt-1 ms-3">Phone Number Required</p>
+            }
+
+            @if(RegisterFormObj.get('phone')?.getError('pattern')){
+            <p class="text-danger mt-1 ms-3"> Invalid Phone Number</p>
+            }
+         </div>
+         }
+      </div>
+
+      <div class="inputGroup my-3">
+         <label style="color: white;" for="name">Password</label>
+         <input class="form-control" formControlName="password" type="password" id="password" required=""
+            autocomplete="off">
+
+         @if(RegisterFormObj.get('password')?.touched){
+         <div>
+
+            @if(RegisterFormObj.get('password')?.getError('required')){
+            <p class="text-danger mt-1 ms-3">Password Required</p>
+            }
+
+            @if(RegisterFormObj.get('password')?.getError('pattern')){
+            <p class="text-danger mt-1 ms-3"> Invalid password </p>
+            }
+         </div>
+         }
+      </div>
+
+      <div class="inputGroup my-3">
+         <label style="color: white;" for="name">Confirm Password</label>
+         <input class="form-control" formControlName="rePassword" type="password" id="rePassword" required=""
+            autocomplete="off">
+
+         @let rePasswordControl = RegisterFormObj.get('rePassword');
+         @if(rePasswordControl?.dirty){
+         <div>
+
+            @if(RegisterFormObj.getError("passMissMatch")){
+            <p class="text-danger mt-1 ms-3">RePassword Doesnt Match Password</p>
+            }
+
+         </div>
+         }
+      </div>
+
+
+      <div class="inputGroup my-3">
+         <button [disabled]="RegisterFormObj.invalid" class="btn btn-primary text-light">
+
+            @if(isLoading == false){
+            <span>SignUp</span>
+            }
+            @else{
+            <span>
+               <div class="loader">
+                  <div class="circle">
+                     <div class="dot"></div>
+                     <div class="outline"></div>
+                  </div>
+                  <div class="circle">
+                     <div class="dot"></div>
+                     <div class="outline"></div>
+                  </div>
+                  <div class="circle">
+                     <div class="dot"></div>
+                     <div class="outline"></div>
+                  </div>
+                  <div class="circle">
+                     <div class="dot"></div>
+                     <div class="outline"></div>
+                  </div>
+               </div>
+            </span>
+            }
+
+
+
+
+         </button>
+      </div>
+
+
+
+   </form>
+</div>

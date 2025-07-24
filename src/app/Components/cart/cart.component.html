@@ -1,0 +1,76 @@
+@if(cartDetails != null){
+
+@if(cartDetails.numOfCartItems > 0){
+<div class="container ">
+    <div class="master-container w-100">
+        <div class="card cart w-100">
+            <label class="title">Shop Cart</label>
+            <div class="products">
+                @for(cartProduct of cartDetails.data.products ; track cartProduct._id){
+                <div class="product my-2">
+                    <div>
+                        <img style="border-radius: 8px;" class="w-100" [src]="cartProduct.product.imageCover" alt="">
+                    </div>
+                    <div>
+                        <span>{{cartProduct.product.title}}</span>
+                        <button (click)="removeItem(cartProduct.product._id)"
+                            style=" display: flex; justify-content: center; align-items: center; font-size: 12px; height: 25px; width: 70px;"
+                            class="btn btn-danger">Delete</button>
+                    </div>
+                    <div class="quantity">
+                    </div>
+                    <label class="price small">{{cartProduct.price}} EGP <br>
+                        <div style="margin-block: 4px; text-align: center;">
+                            <button (click)="updateProductQuantity(cartProduct.product._id , cartProduct.count + 1)"
+                                style=" border: 2px solid rgba(0, 0, 0, 0.16); border-radius: 5px; margin-inline: 6px; background: none; ">+</button>
+                            <label>{{cartProduct.count}}</label>
+                            <button (click)="updateProductQuantity(cartProduct.product._id , cartProduct.count - 1)"
+                                style=" border: 2px solid rgba(0, 0, 0, 0.16); border-radius: 5px; margin-inline: 6px; background: none; ">-</button>
+                        </div>
+                    </label>
+                </div>
+                }
+
+                <div><button (click)="clearCart()" class="btn btn-danger mt-3 w-100">Remove All</button></div>
+
+
+
+            </div>
+        </div>
+
+        <div class="card coupons w-100">
+            <label class="title">Apply coupons</label>
+            <form class="form">
+                <input type="text" placeholder="Apply your coupons here" class="input_field">
+                <button class="btn btn-primary">Apply</button>
+            </form>
+        </div>
+
+        <div class="card checkout w-100">
+
+            <label class="title">Checkout</label>
+            @for(cartProduct of cartDetails.data.products ; track cartProduct._id){
+            <div class="details">
+                <span>{{cartProduct.product.title}}</span>
+                <span>{{cartProduct.price}} EGP</span>
+            </div>
+            }
+
+            <div class="checkout--footer d-flex justify-content-between">
+                <div><label class="price">{{cartDetails.data.totalCartPrice}} EGP</label></div>
+                <div >
+                    <button [routerLink]="['/shipping-adress' , cartDetails.cartId]" class="btn btn-primary ms-2 me-2">Online Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@else{
+<div class="container mx-auto text-danger">
+    <h2>No Items Found</h2>
+</div>
+}
+
+}

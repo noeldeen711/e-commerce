@@ -1,0 +1,113 @@
+<div class="container p-4 mx-auto ">
+    
+    <form (ngSubmit)="handleLogin()" [formGroup]="loginFormObj">
+
+
+
+
+        @if(responseErrorMessage){
+
+              <div class="error mx-auto">
+      <div class="error__icon">
+         <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      <div style="font-weight: bold; font-size: 14px;" class="error__title mx-auto">{{responseErrorMessage}}</div>
+      <div class="error__close">
+         <svg
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      </div>
+
+      }
+
+
+        <div class="heading">Sign In</div>
+
+
+        <div class="inputGroup">
+            <input class="input form-control mt-3" formControlName="email" type="email" id="email" required="" placeholder="E-mail" autocomplete="off">
+            
+
+            @if(loginFormObj.get('email')?.touched){
+                <div>
+
+                     @if(loginFormObj.get('email')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">Email Required</p>
+                     }
+
+                     @if(loginFormObj.get('email')?.getError('email')){
+                        <p class="text-danger mt-1 ms-3" >Email Not Valid</p>
+                     }
+                </div>
+            }
+        </div>
+
+        <div class="inputGroup">
+            <input class="input form-control mt-3" formControlName="password" type="password" id="password" required="" placeholder="Password" autocomplete="off">
+            
+
+             @if(loginFormObj.get('password')?.touched){
+                <div>
+
+                     @if(loginFormObj.get('password')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">Password Required</p>
+                     }
+
+                     @if(loginFormObj.get('password')?.getError('pattern')){
+                        <p class="text-danger mt-1 ms-3" > Invalid password </p>
+                     }
+                </div>
+            }
+        </div>
+
+
+        <div style="text-align: center; margin-block: 10px;"><a routerLink="/forget-pass">Forget Password ?</a></div>
+      
+
+        <div class="inputGroup text-center">
+             <button type="submit" [disabled]="loginFormObj.invalid" class="login-button btn btn-info text-light mt-3 " >
+               
+               @if(isLoading == false){
+                  <span>SignIn</span>
+               }
+               @else{
+                    <span>
+                  <div class="loader">
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                  </div>
+               </span>
+               } 
+
+              
+                  
+              
+            </button>
+        </div>
+            
+       </form>
+</div>

@@ -1,0 +1,17 @@
+<div *ngIf="wishlistItems.length === 0">
+    <p>No items in your wishlist.</p>
+</div>
+
+
+<div  class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+    <div *ngFor="let item of wishlistItems" class="All col p-3 my-4">
+        <div class="card mx-auto">
+            <img [src]="item.imageCover" style="border-radius: 15px;" class=" w-100" />
+            <div class="card__content">
+                <span class="title text-white my-2">{{ item.title }}</span>
+                <p class="text-white">Price: {{ item.price }} EGP</p>
+            </div>
+            <button (click)="removeItem(item._id)" class="addtocart btn btn-danger text-white">Remove</button>
+        </div>
+    </div>
+</div>

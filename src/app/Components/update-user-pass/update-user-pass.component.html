@@ -1,0 +1,116 @@
+<div class="container my-5">
+    <div class="heading">Update Your Password</div>
+    <form (ngSubmit)="handleResetPassword()" [formGroup]="resetPasswordForm" action="" class="form">
+
+        @if(responseErrorMessage){
+
+              <div class="error mx-auto">
+      <div class="error__icon">
+         <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      <div style="font-weight: bold; font-size: 14px;" class="error__title mx-auto">{{responseErrorMessage}}</div>
+      <div class="error__close">
+         <svg
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      </div>
+
+      }
+
+
+        <input formControlName="currentPassword" required="" class="input" type="text" name="C-pass" id="C-pass" placeholder="Current Password">
+        @if(resetPasswordForm.get('currentPassword')?.touched){
+                <div>
+
+                     @if(resetPasswordForm.get('currentPassword')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">Current Password Required</p>
+                     }
+
+                     @if(resetPasswordForm.get('currentPassword')?.getError('pattern')){
+                        <p class="text-danger mt-1 ms-3" > Invalid Current Password </p>
+                     }
+                </div>
+            }
+        <input formControlName="password" required="" class="input" type="text" name="N-password" id="N-password" placeholder=" New Password">
+         @if(resetPasswordForm.get('password')?.touched){
+                <div>
+
+                     @if(resetPasswordForm.get('password')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">New password Required</p>
+                     }
+
+                     @if(resetPasswordForm.get('password')?.getError('pattern')){
+                        <p class="text-danger mt-1 ms-3" > Invalid new password </p>
+                     }
+                </div>
+            }
+        <input formControlName="rePassword" required="" class="input" type="text" name="R-pass" id="R-pass" placeholder="Repassword">
+        @if(resetPasswordForm.get('rePassword')?.touched){
+                <div>
+
+                     @if(resetPasswordForm.get('rePassword')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3"> Repassword Required</p>
+                     }
+
+                     @if(resetPasswordForm.get('rePassword')?.getError('pattern')){
+                        <p class="text-danger mt-1 ms-3" > Invalid Repassword </p>
+                     }
+                </div>
+            }
+
+            @if(isLoading == false){
+            <input class="login-button" type="submit" value="Submit">
+
+               }
+               @else{
+                <span>
+                  <div class="loader">
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                  </div>
+               </span>
+               }
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span  class="agreement"><a style="font-size: 17px; text-decoration: underline;"  href="#">Contact Us </a></span>
+</div>

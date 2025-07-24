@@ -1,0 +1,32 @@
+<form [formGroup]="shippingAddressForm" (ngSubmit)="onlinePayment()" class="form mx-auto">
+
+    <p class="title">Enter Your Adress </p>
+    <p class="message">Tell us your adress accurately for fast shipping </p>
+        <div class="flex">
+        <label>
+            <input  required="" placeholder="" type="text" class="input">
+            <span>Firstname</span>
+        </label>
+
+        <label>
+            <input required="" placeholder="" type="text" class="input">
+            <span>Lastname</span>
+        </label>
+    </div>  
+            
+    <label>
+        <input formControlName="details" required="" placeholder="" type="text" class="input">
+        <span>Details</span>
+    </label> 
+        
+    <label>
+        <input formControlName="phone" required="" placeholder="" type="tel" class="input">
+        <span>Phone</span>
+    </label>
+    <label>
+        <input formControlName="city" required="" placeholder="" type="text" class="input">
+        <span>City</span>
+    </label>
+    <button class="submit">Submit</button>
+
+</form>

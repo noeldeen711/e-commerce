@@ -1,0 +1,13 @@
+<div class="brands-container">
+
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gap-4">
+
+
+        @for(category of categoryList.slice(0,7); track category._id){
+        <div class="brand-card mx-auto">
+            <img style="border-radius: 10px; height: 150px; object-fit: cover; " [src]="category.image" class="brands-image w-100">
+            <h3 class="brand-name text-primary">{{ category.name }}</h3>
+        </div>
+        }
+    </div>
+</div>

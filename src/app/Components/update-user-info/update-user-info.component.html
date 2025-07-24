@@ -1,0 +1,90 @@
+<div class="container my-5">
+    <div class="heading">Edit Your Info</div>
+    <form (ngSubmit)="handleEditInfo()" [formGroup]="editInfoForm" action="" class="form">
+          @if(responseErrorMessage){
+
+              <div class="error mx-auto">
+      <div class="error__icon">
+         <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      <div style="font-weight: bold; font-size: 14px;" class="error__title mx-auto">{{responseErrorMessage}}</div>
+      <div class="error__close">
+         <svg
+            height="20"
+            viewBox="0 0 20 20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg">
+         </svg>
+      </div>
+      </div>
+
+      }
+
+
+        <input formControlName="name" required="" class="input" type="text"  placeholder="Name">
+        @if(editInfoForm.get('name')?.touched){
+                <div>
+
+                     @if(editInfoForm.get('name')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3">Name Required</p>
+                     }
+                </div>
+            }
+        <input formControlName="email" required="" class="input" type="text"  placeholder=" Email">
+         @if(editInfoForm.get('email')?.touched){
+                <div>
+
+                     @if(editInfoForm.get('email')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3"> Email Required</p>
+                     }
+                </div>
+            }
+        <input formControlName="phone" required="" class="input" type="text"  placeholder="phone">
+        @if(editInfoForm.get('phone')?.touched){
+                <div>
+
+                     @if(editInfoForm.get('phone')?.getError('required')){
+                        <p class="text-danger mt-1 ms-3"> phone Required</p>
+                     }
+
+                     @if(editInfoForm.get('phone')?.getError('pattern')){
+                        <p class="text-danger mt-1 ms-3" > Invalid phone </p>
+                     }
+                </div>
+            }
+
+            @if(isLoading == false){
+            <input class="login-button" type="submit" value="Submit">
+
+               }
+               @else{
+                <span>
+                  <div class="loader">
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                     <div class="circle">
+                        <div class="dot"></div>
+                        <div class="outline"></div>
+                     </div>
+                  </div>
+               </span>
+               }
+    </form>
+    <span  class="agreement"><a style="font-size: 17px; text-decoration: underline;"  href="#">Contact Us </a></span>
+</div>
